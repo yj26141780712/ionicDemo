@@ -30,12 +30,12 @@ page-login{
                         border-top: 0;
                     } 
                     input{
-                        display: absolute;
-                        margin-left: 1.5rem;
-                        padding: 0.25rem 0.375rem;            
-                        height: 0.75px;
+                        margin: 0.25rem 0.375rem 0.25rem 1.875rem;         
+                        height: 0.75rem;
+                        line-height: 0.75rem;
                         border: 0;
-                        background: rgba(255, 255, 255, 0);     
+                        background: rgba(255, 255, 255, 0);
+                        box-sizing: border-box;     
                     }
                     label{
                         display: block;
@@ -46,7 +46,6 @@ page-login{
                         line-height: 0.75rem;
                         text-align: center;
                         border-right: 0.025rem solid#ffffff;
-                        //vertical-align: middle;
                     }
                     &:first-child {
                         border-bottom:0.025rem solid #ffffff;  
