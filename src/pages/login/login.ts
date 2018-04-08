@@ -101,7 +101,7 @@ export class LoginPage {
    * @memberof LoginPage
    */
   setIntervalByRAF(func: Function, time: number = 0) {
-    let start = null;
+    let start = null; 
     function step(timestamp) {
       if (!start) start = timestamp;
       var progress = timestamp - start;
