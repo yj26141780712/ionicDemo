@@ -8,6 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from './../pages/home/home';
 import { AppProvider } from '../providers/app/app';
 import { HttpModule } from '@angular/http';
+import { CommonProvider } from '../providers/common/common';
+import { HttpClientModule } from '@angular/common/http';
+import { SignPageModule } from '../pages/sign/sign.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    HttpClientModule,
+    SignPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +33,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppProvider
+    AppProvider,
+    CommonProvider
   ]
 })
 export class AppModule {}

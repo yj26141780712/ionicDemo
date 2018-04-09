@@ -167,8 +167,14 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  wihte-black:(
+    base: #ffffff, 
+    contrast: black
+  )
 );
+
+/*字体颜色*/
 
 
 // App iOS Variables

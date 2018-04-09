@@ -1,7 +1,9 @@
+import { CommonProvider } from './../../providers/common/common';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { SignPage } from '../sign/sign';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,7 +24,9 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public fb: FormBuilder,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public cp: CommonProvider,
+    public modalCtrl: ModalController) {
     this.myForm = fb.group({
       'username': [''],
       'password': ['']
@@ -31,28 +35,21 @@ export class LoginPage {
 
   presentLoadingDefault() {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      spinner: 'hide',
+      content: `please wait`,
+      cssClass: ""
+      //showBackdrop:false
     });
 
     loading.present();
 
     setTimeout(() => {
       loading.dismiss();
-    }, 5000);
+    }, 200000);
   }
 
-
-
   ionViewDidLoad() { //当页面加载时触发
-    console.log(this.start);
-    this.presentLoadingDefault();
-    let a = this.setTimeoutByRAF(() => {
-      console.log("我是定时器！");
-    }, 1000);
-    console.log(a);
-    window.setInterval(()=>{
-      window.cancelAnimationFrame(a);
-    },5000)
+    //this.presentLoadingDefault();
     console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
   }
 
@@ -61,8 +58,6 @@ export class LoginPage {
   }
   ionViewDidEnter() {
     console.log("3.0 ionViewDidEnter 当进入页面时触发");
-
-
   }
   ionViewWillLeave() {
     console.log("4.0 ionViewWillLeave 当将要从页面离开时触发");
@@ -84,7 +79,7 @@ export class LoginPage {
 
   onSubmit() {
     console.log(this.myForm.value);
-
+    //this.login();
   }
 
   login() {
@@ -92,47 +87,28 @@ export class LoginPage {
       userInfo: this.myForm.value
     });
   }
-
-  /**
-   * 使用requestAnimationFrame包装的类似window.setInterval方法
-   * 
-   * @param {Function} fun 方法
-   * @param {number} time 时间间隔
-   * @memberof LoginPage
-   */
-  setIntervalByRAF(func: Function, time: number = 0) {
-    let start = null; 
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = timestamp - start;
-      if (progress < time) {
-        window.requestAnimationFrame(step);
-      } else {
-        func();
-      }
-    }
-    window.requestAnimationFrame(step);
+  forget(event: any) {
+    console.log("我点击了密码重置");
   }
 
-  setTimeoutByRAF(func: Function, time: number = 0) {
-    let start = null;
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      let progress = timestamp - start;
-      //console.log(progress);
-      //console.log(time);
+  sign(event: any) {
+    console.log("我点击了注册");
+    this.presentSignModal();
+  }
 
-      //let timeDif = progress / time;
-      //console.log(progress);
-      if (time === 0 || progress >= time) {
-        start = timestamp;
-        func();
+  presentSignModal() {
+    let profileModal = this.modalCtrl.create(SignPage, { username: this.myForm.controls["username"].value });
+    //console.log(profileModal);
+    profileModal.onDidDismiss(data => {
+      if (data) {
+        console.log(data);
+        this.myForm.reset(data);
       }
-      let b =window.requestAnimationFrame(step);
-      console.log(b);
-    }
-    let a = window.requestAnimationFrame(step);
-    console.log(a);
-    return a;
+    });
+    profileModal.present();
+    console.log("我没有挂");
+    // this.navCtrl.push("SignPage", {
+    //   userInfo: this.myForm.value
+    // });
   }
 }

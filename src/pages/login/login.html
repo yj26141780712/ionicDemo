@@ -5,22 +5,39 @@
   Ionic pages and navigation.
 -->
 
-<ion-content page-login>
+<ion-header class="bg-ts" >
+  <ion-navbar transparent>
+    <ion-title text-center><span class="text-white">登陆</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- <div class="login-header">
+
+</div> -->
+
+<ion-content page-login class="bg-ts">
   <div class="login-content">
-    <div class="login-box">
+    <div class="login-box text-white">
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="login-input">
           <div class="login-group">
             <label fixed>用户名</label>
-            <input type="text" value="" formControlName="username">
+            <input type="text" formControlName="username">
           </div>
           <div class="login-group">
-            <label fixed>密码</label>
+            <label fixed>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
             <input type="password" formControlName="password">
           </div>
         </div>
         <div class="login-submit">
-          <button type="submit">登陆</button>
+          <button type="submit" class="text-white">登陆</button>
+        </div>
+        <div class="login-check">
+          <div class="left">
+            <label (click)="forget($event)">忘记密码？</label>
+          </div>
+          <div class="right">
+            <label (click)="sign($event)">新用户注册</label>
+          </div>
         </div>
       </form>
     </div>

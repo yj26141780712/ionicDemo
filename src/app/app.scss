@@ -223,3 +223,36 @@ textarea {
 .toast-ios .toast-message{
   text-align: center;
 }
+
+
+
+/* 工具类*/
+/*背景颜色*/
+.bg-ts{
+  background:rgba(255, 255, 255, 0);
+}
+.btn-noHeight{
+  height: auto;
+}
+/* 字体颜色 */
+.text-white{
+  color: #ffffff;
+}
+/*布局*/
+.span{
+  margin-left: 0.25rem;
+}
+
+/*表单*/
+.form-group{
+   margin-bottom: .25rem;
+}
+.form-control{
+  width: 100%;
+  padding: .15rem .3rem;
+  line-height: .6rem;
+  border: .025rem solid #ccc;
+  border-radius: .1rem;
+}
+
+
