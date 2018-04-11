@@ -11,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import { CommonProvider } from '../providers/common/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SignPageModule } from '../pages/sign/sign.module';
+import { IonicStorageModule } from '@ionic/storage';
+import { FunctionProvider } from '../providers/function/function';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,11 @@ import { SignPageModule } from '../pages/sign/sign.module';
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
-    SignPageModule
+    SignPageModule,
+    IonicStorageModule.forRoot({
+      name: 'MyApp',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })//这需要添加 之前providers里的需要删除
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +40,8 @@ import { SignPageModule } from '../pages/sign/sign.module';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppProvider,
-    CommonProvider
+    CommonProvider,
+    FunctionProvider,
   ]
 })
 export class AppModule {}

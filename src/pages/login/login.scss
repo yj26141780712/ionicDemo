@@ -2,6 +2,8 @@
 
 page-login{
     background: url("../../assets/imgs/bg2.jpg");
+    background-size:100% 100%;
+	background-repeat:no-repeat;
     .login-content{
         height: 100%;
         font-size: .375rem; 
@@ -98,7 +100,9 @@ page-login{
     background: rgba(255, 255, 255, 0);
 }
 .loginLoadingPage{
-    background: url('../../assets/imgs/')
+    background: url('../../assets/imgs/bg3.jpg');
+    background-size:100% 100%;
+	background-repeat:no-repeat;
 }
 
 

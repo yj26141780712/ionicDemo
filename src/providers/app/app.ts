@@ -11,23 +11,64 @@ export class AppGlobal {
         products: "_dress_products"
     }
     //接口基地址
-    static domain = "https://tlimama.tongedev.cn"
+    static domain = "http://localhost:50525/"
 
     //接口地址
-    static API: any = {
-        getCategories: '/api/ionic3/getCategories',
-        getProducts: '/api/ionic3/getProducts',
-        getDetails: '/api/ionic3/details'
-    };
+    // static API: any = {
+    //     getCategories: '/api/ionic3/getCategories',
+    //     getProducts: '/api/ionic3/getProducts',
+    //     getDetails: '/api/ionic3/details'
+    // };
 }
 
 @Injectable()
 export class AppProvider {
 
-  constructor(public http: Http, 
-    public loadingCtrl: LoadingController, 
-    private alertCtrl: AlertController, 
-    private toastCtrl: ToastController, ) { }
+    constructor(public http: Http,
+        public loadingCtrl: LoadingController,
+        private alertCtrl: AlertController,
+        private toastCtrl: ToastController, ) { }
+
+    // 表单校验
+
+    formValidate(controls: any): string {
+        for (let key in controls) { //遍历对象使用for in
+            let ct = controls[key];
+            if (ct.invalid) {
+                let strError = this.errorCheckReturn(ct, key);
+                return strError;
+            }
+        }
+        return null;
+    }
+    /**
+     * 
+     * @param ct 表单控件
+     * @param name 表单name
+     */
+    errorCheckReturn(ct: any, name): string {
+        for (let key in ct.errors) {
+            let error = ct.errors[key];
+            switch (key) {
+                case "required":
+                    return `请输入${name}`;
+                case "minlength":
+                    return `${name}长度不能小于${error.requiredLength}`;
+                case "requiredUserError":
+                    return error || `请输入${name}`;
+                case "reCheckError":
+                    return error || `${name}规则不符`;
+                default:
+                    return null;
+            }
+        }
+        return null;
+    }
+
+    getName(name):string{
+        //document.getElementsByName(name)
+        return null;
+    }
 
     // 对参数进行编码
     encode(params) {
@@ -86,7 +127,7 @@ export class AppProvider {
                 this.handleError(error);
             });
     }
-    
+
     private handleError(error: Response | any) {
         let msg = '';
         if (error.status == 400) {
@@ -135,6 +176,8 @@ export class AppProvider {
             message: message,
             duration: 2000,
             dismissOnPageChange: true,
+            position: 'top',
+            cssClass:"text-center"
         });
         toast.present();
         if (callback) {

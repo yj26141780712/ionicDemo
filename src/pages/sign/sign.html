@@ -4,32 +4,34 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header >
-  <ion-navbar color="primary">
-    <button ion-button class="btn-noHeight" (click)="goBack()" >
-      <ion-icon name="arrow-back"><span>返回</span></ion-icon>
+<ion-header>
+  <ion-navbar color="primary" hideBackButton="true">
+    <button class="menu-button" (click)="goBack()">
+      <ion-icon name="arrow-back">
+        返回
+      </ion-icon>
     </button>
-    <ion-title>注册</ion-title>
+    <ion-title text-center>注册</ion-title>
   </ion-navbar>
 </ion-header>
-
-
-<ion-content padding>
-  <form action="">
+<ion-content padding> 
+  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <div class="form-group">
       <label for="username">用户名</label>
-      <input type="text" class="form-control" name="username" placeholder="8-12位数字或字母">
+      <input type="text" class="form-control" name="username" placeholder="8-20位数字或字母" [(ngModel)]="username" reCheck="^[0-9a-zA-Z]{8,20}$"
+        reCheckError="用户名不正确(8-20位数字或字母)!">
     </div>
     <div class="form-group">
-      <label for="password">昵&nbsp;&nbsp;&nbsp;&nbsp;称</label>
-      <input type="text" class="form-control" name="password" placeholder="4-12位字符">
+      <label for="nickName">昵&nbsp;&nbsp;&nbsp;&nbsp;称</label>
+      <input type="text" class="form-control" name="nickName" placeholder="2-8位字符" [(ngModel)]="nickName" reCheck="^.{2,8}$" reCheckError="昵称不正确(2-8位字符)! ">
     </div>
     <div class="form-group">
       <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-      <input type="text" class="form-control" name="password" placeholder="6-20位数字或字符">
+      <input type="password" class="form-control" name="password" placeholder="6-20位数字和字符混合" [(ngModel)]="password" reCheck="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9a-zA-Z]{6,20}$"
+        reCheckError="密码不正确(6-20位数字和字符混合)!">
     </div>
     <div class="form-group">
-      <button ion-button full (click)="signUp($event)">注册</button>
+      <button type="submit" ion-button full>注册</button>
     </div>
   </form>
 </ion-content>

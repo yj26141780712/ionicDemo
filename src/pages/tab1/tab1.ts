@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AppProvider, AppGlobal } from '../../providers/app/app';
+import { Component, Input } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
+import { AppProvider } from '../../providers/app/app';
 
 @IonicPage()
 @Component({
@@ -9,54 +9,50 @@ import { AppProvider, AppGlobal } from '../../providers/app/app';
 })
 export class Tab1Page {
 
+
   slides: Array<any> = [];
-  categories: Array<any> = [];
-  products: Array<any> = [];
-
-  spinner1: boolean = true;
-
-  params = {
-    favoritesId: 2054400,
-    pageNo: 1,
-    pageSize: 20
-  }
-
-  constructor(public appService: AppProvider, public navCtrl: NavController) {
+  spinner1: boolean;
+  functions: Array<any> = [];
+  constructor(public ap: AppProvider, public navCtrl: NavController) {
     this.getSlides();
-    this.getCategories();
-    this.getProducts();
+    this.getFunctions();
+    //this.getProducts();
   }
   //获取幻灯片
   getSlides() {
-    var params = {
-      favoritesId: 2056439,
-      pageNo: 1,
-      pageSize: 5
-    }
-    this.appService.httpGet(AppGlobal.API.getProducts, params, rs => {
-      console.debug(rs);
-      this.slides = rs.data;
-      console.log(rs.data);
-      this.spinner1 = false;
-    })
+    this.slides = [
+      {
+        pictUrl: "../../assets/imgs/slider1.jpg",
+        title: "标题一"
+      },
+      {
+        pictUrl: "../../assets/imgs/slider2.jpg",
+        title: "标题二"
+      },
+      {
+        pictUrl: "../../assets/imgs/slider3.jpg",
+        title: "标题三"
+      }
+    ];
+    this.spinner1 = false;
   }
-  //获取分类
-  getCategories() {
-    this.appService.httpGet(AppGlobal.API.getCategories, { appTag: 'dress' }, rs => {
-      console.debug(rs);
-      console.log(rs.data);
-      this.categories = rs.data;
-    })
+  getFunctions() {
+    let url = "api/function";
+    this.functions=[
+      {  },
+      {},
+      {},
+    ]
+    // this.ap.httpGet(url, {}, (data) => {
+    //   this.functions = data
+    //   console.log(data);
+    // }, true);
   }
-  //获取首页推荐列表
-  getProducts() {
-    this.appService.httpGet(AppGlobal.API.getProducts, this.params, rs => {
-      console.debug(rs);
-      this.products = rs.data;
-    })
+  goDetails() {
+    console.log("go to Details");
   }
-  //商品详情
-  goDetails(item) {
-    console.debug('go details...')
+  goFunctions() {
+    console.log("go to Functions");
   }
+
 }

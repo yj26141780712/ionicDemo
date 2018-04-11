@@ -1,3 +1,5 @@
+import { AppProvider } from './../../providers/app/app';
+import { Storage } from '@ionic/storage';
 import { CommonProvider } from './../../providers/common/common';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
@@ -19,15 +21,16 @@ import { SignPage } from '../sign/sign';
 })
 export class LoginPage {
 
-  myForm: FormGroup;
+  loginForm: FormGroup;
   start: number;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public fb: FormBuilder,
     public loadingCtrl: LoadingController,
-    public cp: CommonProvider,
-    public modalCtrl: ModalController) {
-    this.myForm = fb.group({
+    public ap: AppProvider,
+    public modalCtrl: ModalController,
+    public storage: Storage) {
+    this.loginForm = fb.group({
       'username': [''],
       'password': ['']
     });
@@ -36,20 +39,21 @@ export class LoginPage {
   presentLoadingDefault() {
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
-      content: `please wait`,
-      cssClass: ""
-      //showBackdrop:false
+      content: `加载中`,
+      cssClass: "loginLoadingPage",
+      showBackdrop: false
     });
-
     loading.present();
-
     setTimeout(() => {
       loading.dismiss();
-    }, 200000);
+    }, 1000);
   }
 
   ionViewDidLoad() { //当页面加载时触发
-    //this.presentLoadingDefault();
+    this.presentLoadingDefault(); //加载loading页面 
+    this.storage.get('userinfo').then((value) => {
+      if (value) this.loginForm.reset(value);
+    });
     console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
   }
 
@@ -78,37 +82,58 @@ export class LoginPage {
   }
 
   onSubmit() {
-    console.log(this.myForm.value);
-    //this.login();
+    this.login();
   }
 
+  /**
+   * 登陆
+   */
   login() {
-    this.navCtrl.push(HomePage, {
-      userInfo: this.myForm.value
-    });
+    let url = "api/role/1/user";
+    this.ap.httpGet(url, 
+      {
+        username:this.loginForm.value.username,
+        password:this.loginForm.value.password
+      }, 
+      (data) => {
+      console.log(data);
+      if(data=="[]"){
+        this.ap.toast('用户名或密码错误!');
+      }else{
+        this.storage.set('userinfo', this.loginForm.value);
+        this.navCtrl.setRoot(HomePage, {
+          userInfo: this.loginForm.value
+        });
+      }
+    }, true);
   }
+
+  /**
+   * 忘记密码
+   * @param event 事件对象
+   */
   forget(event: any) {
     console.log("我点击了密码重置");
   }
 
+  /**
+   * 注册按钮点击时间
+   * @param event 事件对象
+   */
   sign(event: any) {
-    console.log("我点击了注册");
     this.presentSignModal();
   }
-
+  /**
+   * 打开注册页面
+   */
   presentSignModal() {
-    let profileModal = this.modalCtrl.create(SignPage, { username: this.myForm.controls["username"].value });
-    //console.log(profileModal);
+    let profileModal = this.modalCtrl.create(SignPage, { username: this.loginForm.controls["username"].value });
     profileModal.onDidDismiss(data => {
       if (data) {
         console.log(data);
-        this.myForm.reset(data);
+        if (data) this.loginForm.reset(data);
       }
     });
     profileModal.present();
-    console.log("我没有挂");
-    // this.navCtrl.push("SignPage", {
-    //   userInfo: this.myForm.value
-    // });
   }
 }

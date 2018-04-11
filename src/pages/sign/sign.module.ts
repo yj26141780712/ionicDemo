@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SignPage } from './sign';
+import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { SignPage } from './sign';
   ],
   imports: [
     IonicPageModule.forChild(SignPage),
+    DirectivesModule
   ],
 })
-export class SignPageModule {}
+export class SignPageModule {} 
