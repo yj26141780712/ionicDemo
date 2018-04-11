@@ -1,6 +1,86 @@
 page-tab1 {
     ion-slides {
-        height: 30%;
+        height: 5rem;
+        .slide-zoom{
+            img{
+                width: 100%;
+            }
+        }
     }
+    .home-container{
+        ion-grid{
+            padding: .1rem;
+            ion-row{
+                border-radius: 0.3rem;
+                margin-bottom: .1rem;
+                ion-col {
+                    height: 3rem;
+                    padding: 0;
+                    text-align: center;
+                    border-left: .025rem solid #ffffff;
+                    a{
+                        color: #ffffff;
+                        position: relative;
+                        display: block;
+                        height: 50%;
+                        line-height: 1.5rem;
+                        background: #ff697a;
+                        em{
+                            font-style: normal;
+                            display: block;
+                            //height: 1.5rem;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            width: 100%;
+                            transform: translate(-50%,-50%);
+                        }                   
+                    }
+                    a+a{
+                        border-top:  .025rem solid #ffffff;
+                    }
+                }
+                ion-col:nth-of-type(1){
+                    a{
+                        height: 100%;
+                        border-top-left-radius: .125rem;
+                        border-bottom-left-radius: .125rem;
+                        em{
+                            bottom: 0;
+                            left: 0;
+                            transform: inherit;
+                        }
+                    }
+                }
+                ion-col:last-of-type{
+                    a:first-child {
+                        border-top-right-radius: .125rem;
+                    }
+                    a:last-child{
+                        border-bottom-right-radius: .125rem;
+                    }
+                }              
+            }
+            ion-row:nth-child(2){
+                ion-col {
+                    a{
+                        background: #3d98ff;
+                    }
+                }
+            }
+            ion-row:nth-child(3){
+                ion-col {
+                    a{
+                        background: #44c522;
+                        //width: 200%;
+                    }
+                }
+            }
+            ion-row:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
 }
   

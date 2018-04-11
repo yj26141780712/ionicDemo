@@ -38,10 +38,44 @@ export class Tab1Page {
   }
   getFunctions() {
     let url = "api/function";
-    this.functions=[
-      {  },
-      {},
-      {},
+    this.functions = [
+      {
+        id: 1, name: "模块1",
+        pageChild: [
+          {
+            id: 11, name: "模块11",
+            pageChild: [
+              {
+                id: 111,
+                name: "实时数据",
+              }
+            ]
+          }, {
+            id: 12, name: "模块12",
+            pageChild: [
+              {
+                id: 121,
+                name: "机器图标",
+              },
+              {
+                id: 122,
+                name: "润滑信息",
+              }
+            ]
+          }, {
+            id: 13, name: "模块13",
+            pageChild: [
+              {
+                id: 131,
+                name: "机器",
+              },
+              {
+                id: 132,
+                name: "",
+              }
+            ]
+          }]
+      },
     ]
     // this.ap.httpGet(url, {}, (data) => {
     //   this.functions = data

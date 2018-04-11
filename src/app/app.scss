@@ -262,6 +262,7 @@ textarea {
 /*菜单*/
 .menu-button{
    position: absolute;
+   display: flex;
    height: auto;
    top: 0;
    bottom: 0;
@@ -269,4 +270,10 @@ textarea {
    color: #ffffff;
    background: rgba(255, 255, 255, 0);
    z-index: 1;
+   font-size: 0.6rem;
+   align-items:center;
+   span{
+    font-size: 0.5rem;
+    align-items:center;
+   }
 }
