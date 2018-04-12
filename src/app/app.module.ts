@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignPageModule } from '../pages/sign/sign.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { FunctionProvider } from '../providers/function/function';
+import { BackButtonComponent } from '../components/back-button/back-button';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { FunctionProvider } from '../providers/function/function';
     IonicStorageModule.forRoot({
       name: 'MyApp',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
-    })//这需要添加 之前providers里的需要删除
+    }),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

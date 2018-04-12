@@ -11,8 +11,8 @@ export class AppGlobal {
         products: "_dress_products"
     }
     //接口基地址
-    //static domain = "http://localhost:50525/"
-    static domain = "http://192.168.3.3:8084/ionicDemoApi/"
+    static domain = "http://localhost:50525/"
+    //static domain = "http://192.168.3.3:8084/ionicDemoApi/"
     //接口地址
     // static API: any = {
     //     getCategories: '/api/ionic3/getCategories',

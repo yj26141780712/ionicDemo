@@ -119,6 +119,9 @@ $segment-button-md-line-height: rem(40);
 $segment-button-wp-height: rem(40);
 $segment-button-wp-icon-size: rem(26);
 $segment-button-wp-line-height: rem(40);
+//
+//$tabs-ios-tab-font-size:rem(10); 这个会改变字体包裹span的高度
+//$tabs-ios-tab-icon-size:rem(20); 这个变更图标大小   
 $tabs-md-tab-font-size-active:rem(14);
 $tabs-md-tab-icon-size:rem(24);
 $tabs-md-tab-min-height:rem(46);
@@ -130,6 +133,9 @@ $toast-wp-title-padding-top:rem(15);
 $segment-button-ios-icon-line-height:rem(28);
 $menu-width:rem(320);
 $menu-small-width:rem(280);
+
+$content-margin:rem(16);
+$content-ios-margin:rem(16);
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
@@ -223,6 +229,7 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
+//@import "./font-awesome.min.scss"; 
 
 body{
   font-size: .4rem;

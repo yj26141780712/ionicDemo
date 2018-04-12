@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AppProvider } from '../../providers/app/app';
 
@@ -10,6 +10,7 @@ import { AppProvider } from '../../providers/app/app';
 export class Tab1Page {
 
 
+  state: boolean = false;
   slides: Array<any> = [];
   spinner1: boolean;
   functions: Array<any> = [];
@@ -37,7 +38,7 @@ export class Tab1Page {
     this.spinner1 = false;
   }
   getFunctions() {
-    let url = "api/function";
+    // let url = "api/function";
     this.functions = [
       {
         id: 1, name: "模块1",
@@ -82,11 +83,8 @@ export class Tab1Page {
     //   console.log(data);
     // }, true);
   }
-  goDetails() {
-    console.log("go to Details");
-  }
-  goFunctions() {
-    console.log("go to Functions");
-  }
 
+  goPage(page:string,index:Number) {
+    this.navCtrl.push(page, { index: index });
+  }
 }

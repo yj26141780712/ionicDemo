@@ -25,6 +25,7 @@ page-tab1 {
                         height: 50%;
                         line-height: 1.5rem;
                         background: #ff697a;
+                        text-decoration: none;
                         em{
                             font-style: normal;
                             display: block;
@@ -34,11 +35,25 @@ page-tab1 {
                             left: 50%;
                             width: 100%;
                             transform: translate(-50%,-50%);
+                        }
+                        ion-icon{
+                            position: absolute;
+                            height: 1.25rem;
+                            width: 1.25rem;
+                            font-size: 1.25rem;
+                            bottom: .40rem;
+                            transform: translate(-50%);
                         }                   
+                    }
+                    a:active{ //hover
+                        //background: #3d98ff;
+                        transform: scale(.93) ;
+                        transition: all .1s ease-out
                     }
                     a+a{
                         border-top:  .025rem solid #ffffff;
                     }
+                    
                 }
                 ion-col:nth-of-type(1){
                     a{
@@ -46,7 +61,7 @@ page-tab1 {
                         border-top-left-radius: .125rem;
                         border-bottom-left-radius: .125rem;
                         em{
-                            bottom: 0;
+                            top: 0;
                             left: 0;
                             transform: inherit;
                         }

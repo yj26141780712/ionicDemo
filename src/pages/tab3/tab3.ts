@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 /**
  * Generated class for the Tab3Page page.
@@ -15,11 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab3Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private event:Events) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab3Page');
   }
 
+  goLogin(){
+    this.event.publish("tologin");
+  }
 }

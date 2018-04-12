@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { DetailComponent } from '../../components/detail/detail';
 
 /**
  * Generated class for the Tab2Page page.
@@ -15,12 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab2Page');
   }
    
-  
+  testModal(){
+    console.log("我点击了");
+    let detail=this.modalCtrl.create(DetailComponent);
+    detail.present();
+  }
 }

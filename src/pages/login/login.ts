@@ -1,8 +1,7 @@
 import { AppProvider } from './../../providers/app/app';
 import { Storage } from '@ionic/storage';
-import { CommonProvider } from './../../providers/common/common';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { SignPage } from '../sign/sign';
@@ -26,34 +25,20 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public fb: FormBuilder,
-    public loadingCtrl: LoadingController,
     public ap: AppProvider,
     public modalCtrl: ModalController,
-    public storage: Storage) {
+    public storage: Storage,
+    public event:Events) {
     this.loginForm = fb.group({
       'username': [''],
       'password': ['']
     });
   }
-
-  presentLoadingDefault() {
-    let loading = this.loadingCtrl.create({
-      spinner: 'hide',
-      content: `加载中`,
-      cssClass: "loginLoadingPage",
-      showBackdrop: false
-    });
-    loading.present();
-    setTimeout(() => {
-      loading.dismiss();
-    }, 1000);
-  }
-
-  ionViewDidLoad() { //当页面加载时触发
-    this.presentLoadingDefault(); //加载loading页面 
+  ionViewDidLoad() { 
     this.storage.get('userinfo').then((value) => {
       if (value) this.loginForm.reset(value);
     });
+    this.listenEvents();
     console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
   }
 
@@ -127,7 +112,10 @@ export class LoginPage {
    * 打开注册页面
    */
   presentSignModal() {
-    let profileModal = this.modalCtrl.create(SignPage, { username: this.loginForm.controls["username"].value });
+    let profileModal = this.modalCtrl.create(SignPage, 
+      { username: this.loginForm.controls["username"].value },
+      { showBackdrop:true}
+    );
     profileModal.onDidDismiss(data => {
       if (data) {
         console.log(data);
@@ -135,5 +123,16 @@ export class LoginPage {
       }
     });
     profileModal.present();
+  }
+  
+  /**
+   * 监听退出
+   */
+  listenEvents(){
+    this.event.subscribe("tologin",()=>{  
+      //this.storage.remove('userinfo');
+        console.log("退出登陆！");
+        this.navCtrl.setRoot("LoginPage");
+    })
   }
 }
