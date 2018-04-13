@@ -34,7 +34,7 @@ export class MachineChartPage {
       //   [{ name: "3" }, { name: "5" }, { name: "7" }],
       // ]
       //let arr = [];
-      console.log(data,1);
+      console.log(data,1,2);
       //data=data.push(data);
       for (let i = 0; i < data.length; i += 3) {
         this.machineList.push(data.slice(i,i+3));
