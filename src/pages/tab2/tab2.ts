@@ -16,16 +16,23 @@ import { DetailComponent } from '../../components/detail/detail';
 })
 export class Tab2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab2Page');
   }
-   
-  testModal(){
+
+  testModal() {
     console.log("我点击了");
-    let detail=this.modalCtrl.create(DetailComponent);
+    let html = `<div>我是一个div12123131231231<button>123<botton><div>`;
+    let detail = this.modalCtrl.create(DetailComponent,
+      {
+        html: html,
+        height: 200,
+        width: 100
+      }
+    );
     detail.present();
   }
 }

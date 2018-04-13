@@ -10,6 +10,6 @@ import { DirectivesModule } from '../../directives/directives.module';
   imports: [
     IonicPageModule.forChild(SignPage),
     DirectivesModule
-  ],
+  ]
 })
 export class SignPageModule {} 

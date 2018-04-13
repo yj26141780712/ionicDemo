@@ -23,13 +23,18 @@ import { ComponentsModule } from '../components/components.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      iconMode: 'ios',
+      mode: 'ios',
+      tab:'tabs-android'
+    }),
     HttpModule,
     HttpClientModule,
     SignPageModule,
     IonicStorageModule.forRoot({
       name: 'MyApp',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     ComponentsModule
   ],
@@ -41,10 +46,10 @@ import { ComponentsModule } from '../components/components.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AppProvider,
     CommonProvider,
     FunctionProvider,
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -39,52 +39,31 @@ export class Tab1Page {
   }
   getFunctions() {
     // let url = "api/function";
-    this.functions = [
-      {
-        id: 1, name: "模块1",
-        pageChild: [
-          {
-            id: 11, name: "模块11",
-            pageChild: [
-              {
-                id: 111,
-                name: "实时数据",
-              }
-            ]
-          }, {
-            id: 12, name: "模块12",
-            pageChild: [
-              {
-                id: 121,
-                name: "机器图标",
-              },
-              {
-                id: 122,
-                name: "润滑信息",
-              }
-            ]
-          }, {
-            id: 13, name: "模块13",
-            pageChild: [
-              {
-                id: 131,
-                name: "机器",
-              },
-              {
-                id: 132,
-                name: "",
-              }
-            ]
-          }]
-      },
-    ]
-    // this.ap.httpGet(url, {}, (data) => {
-    //   this.functions = data
-    //   console.log(data);
-    // }, true);
+    // this.functions = [ 
+    //   [
+    //     [{ name: "实时数据", page: "RtdataPage", index: 0, icon: "globe" }],
+    //     [{ name: "机器图表", page: "MachineChartPage", index: 1, icon: null }, { name: "润滑信息", page: "LubricationInfoPage", index: 3, icon: null }],
+    //     [{ name: "机器列表", page: "MachineListPage", index: 2, icon: null }, { name: "", page: "", index: null, icon: null }]
+    //   ],
+    //   [
+    //     [{ name: "实时数据", page: "", index: 1, icon: "laptop" }],
+    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "", page: "", index: 1, icon: "" }]
+    //   ],
+    //   [
+    //     [{ name: "实时数据", page: "", index: 1, icon: "construct" }],
+    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }]
+    //   ]
+    // ]  
+    let url="api/function";
+    this.ap.httpGet(url, {}, (data) => {
+      this.functions = data
+      console.log(data); 
+    }, true);
   }
 
-  goPage(page:string,index:Number) {
-    this.navCtrl.push(page, { index: index });
+  goPage(page: string, index: Number) {     
+    if(page&&typeof index =="number") this.navCtrl.push(page, { index: index }); 
   }
 }

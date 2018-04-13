@@ -7,18 +7,18 @@ export class AppGlobal {
     //缓存key的配置
     static cache: any = {
         slides: "_dress_slides",
-        categories: "_dress_categories",
-        products: "_dress_products"
+        functions: "_dress_functions",
+        machines: "_dress_machines"
     }
     //接口基地址
     static domain = "http://localhost:50525/"
     //static domain = "http://192.168.3.3:8084/ionicDemoApi/"
-    //接口地址
-    // static API: any = {
-    //     getCategories: '/api/ionic3/getCategories',
-    //     getProducts: '/api/ionic3/getProducts',
-    //     getDetails: '/api/ionic3/details'
-    // };
+    接口地址
+    static API: any = {
+        getCategories: '/api/ionic3/getFunctions',
+        getProducts: '/api/ionic3/getMachines',
+        getDetails: '/api/ionic3/details'
+    };
 }
 
 @Injectable()
@@ -204,4 +204,6 @@ export class AppProvider {
             console.error("window.localStorage error:" + e);
         }
     }
+
+    
 }

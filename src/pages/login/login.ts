@@ -28,15 +28,17 @@ export class LoginPage {
     public ap: AppProvider,
     public modalCtrl: ModalController,
     public storage: Storage,
-    public event:Events) {
+    public event: Events) {
     this.loginForm = fb.group({
       'username': [''],
       'password': ['']
     });
   }
-  ionViewDidLoad() { 
-    this.storage.get('userinfo').then((value) => {
+  ionViewDidLoad() {
+    this.storage.get('userinfo').then(value => {
       if (value) this.loginForm.reset(value);
+    }).catch(err => {  
+      console.log(err); 
     });
     this.listenEvents();
     console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
@@ -75,22 +77,22 @@ export class LoginPage {
    */
   login() {
     let url = "api/role/1/user";
-    this.ap.httpGet(url, 
+    this.ap.httpGet(url,
       {
-        username:this.loginForm.value.username,
-        password:this.loginForm.value.password
-      }, 
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password
+      },
       (data) => {
-      console.log(data);
-      if(data=="[]"){
-        this.ap.toast('用户名或密码错误!');
-      }else{
-        this.storage.set('userinfo', this.loginForm.value);
-        this.navCtrl.setRoot(HomePage, {
-          userInfo: this.loginForm.value
-        });
-      }
-    }, true);
+        console.log(data);
+        if (data == "[]") {
+          this.ap.toast('用户名或密码错误!');
+        } else {
+          this.storage.set('userinfo', this.loginForm.value);
+          this.navCtrl.setRoot(HomePage, {
+            userInfo: this.loginForm.value
+          });
+        }
+      }, true);
   }
 
   /**
@@ -112,9 +114,9 @@ export class LoginPage {
    * 打开注册页面
    */
   presentSignModal() {
-    let profileModal = this.modalCtrl.create(SignPage, 
+    let profileModal = this.modalCtrl.create(SignPage,
       { username: this.loginForm.controls["username"].value },
-      { showBackdrop:true}
+      { showBackdrop: true }
     );
     profileModal.onDidDismiss(data => {
       if (data) {
@@ -124,15 +126,15 @@ export class LoginPage {
     });
     profileModal.present();
   }
-  
+
   /**
    * 监听退出
    */
-  listenEvents(){
-    this.event.subscribe("tologin",()=>{  
+  listenEvents() {
+    this.event.subscribe("tologin", () => {
       //this.storage.remove('userinfo');
-        console.log("退出登陆！");
-        this.navCtrl.setRoot("LoginPage");
+      console.log("退出登陆！");
+      this.navCtrl.setRoot("LoginPage");
     })
   }
 }
