@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { Tab2Page } from './tab2';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { Tab2Page } from './tab2';
   ],
   imports: [
     IonicPageModule.forChild(Tab2Page),
+    NgxEchartsModule
   ],
 })
 export class Tab2PageModule {}

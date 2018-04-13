@@ -15,6 +15,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FunctionProvider } from '../providers/function/function';
 import { BackButtonComponent } from '../components/back-button/back-button';
 import { ComponentsModule } from '../components/components.module';
+import { NgxEchartsModule} from 'ngx-echarts';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { ComponentsModule } from '../components/components.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      iconMode:'md',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
+      mode:'md'//在整个应用程序中使用的模式。
+    }),
     HttpModule,
     HttpClientModule,
     SignPageModule,

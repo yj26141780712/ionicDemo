@@ -83,7 +83,9 @@ export class Tab1Page {
     //   console.log(data);
     // }, true);
   }
-
+  goDetails(item:any){
+      console.log(item);
+  }
   goPage(page:string,index:Number) {
     this.navCtrl.push(page, { index: index });
   }

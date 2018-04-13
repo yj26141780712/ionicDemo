@@ -16,7 +16,8 @@ import { IonicPage } from 'ionic-angular';
 })
 export class MachineChartPage {
 
-  constructor(private ap:AppProvider) {
+  machineList: Array<any>=[];
+  constructor(private ap: AppProvider) {
   }
 
   ionViewDidLoad() {
@@ -24,10 +25,26 @@ export class MachineChartPage {
     this.getMachineChart();
   }
 
-  getMachineChart(){
-     let url="api/machine";
-     this.ap.httpGet(url,{},(data)=>{
-        console.log(data);
-     },true);
+  getMachineChart() {
+    let url = "api/machine";
+    this.ap.httpGet(url, {}, (data) => {
+      // this.machineList = [
+      //   [{ name: "1" }, { name: "1" }, { name: "1" }],
+      //   [{ name: "2" }, { name: "4" }, { name: "6" }],
+      //   [{ name: "3" }, { name: "5" }, { name: "7" }],
+      // ]
+      //let arr = [];
+      console.log(data);
+      //data=data.push(data);
+      for (let i = 0; i < data.length; i += 3) {
+        this.machineList.push(data.slice(i,i+3));
+      }
+      console.log(this.machineList); 
+      for (let i = 0; i < data.length; i += 3) {
+        this.machineList.push(data.slice(i,i+3));
+      }
+      console.log(this.machineList); 
+      //console.log(data);
+    }, true);
   }
 }
