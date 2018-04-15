@@ -107,6 +107,7 @@ export class AppProvider {
             });
     }
 
+  
     httpPost(url, params, callback, loader: boolean = false) {
         let loading = this.loadingCtrl.create();
         if (loader) {

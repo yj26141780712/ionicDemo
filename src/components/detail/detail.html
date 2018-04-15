@@ -1,8 +1,9 @@
 <!-- Generated template for the DetailComponent component -->
-<div class="container">
-  我是内容
-
-  <button>
+<div class="container" [style]="ctStyle">
+  <button (click)="close()">
     <ion-icon name="close"></ion-icon>
   </button>
+  <div [innerHtml]="innerHtml">
+
+  </div>
 </div>

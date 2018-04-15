@@ -9,15 +9,15 @@
     <button class="menu-button" menuToggle>
       <ion-icon name="menu"> </ion-icon>
     </button>
-    <ion-title text-center>功能</ion-title> 
+    <ion-title text-center>功能</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-   <button (click)="testModal()">
-      测试Modal
-   </button>
-   <!-- <div #container class="div-charts"></div> -->
-   <div echarts [options]="echartOption" class="div-charts"></div>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="click(item.action)">
+      {{ item.name }} 
+    </button>
+  </ion-list>
 </ion-content>

@@ -26,8 +26,9 @@ import { NgxEchartsModule} from 'ngx-echarts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{
-      iconMode:'md',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
-      mode:'md'//在整个应用程序中使用的模式。
+      iconMode:'ios',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
+      mode:'ios',//在整个应用程序中使用的模式。
+      backButtonText:''
     }),
     HttpModule,
     HttpClientModule,
