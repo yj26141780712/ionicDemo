@@ -1,3 +1,88 @@
 page-rtdata {
-
+    .serach-area{
+        padding: .125rem;
+        height: 1.5rem;    
+        background: #ffffff;
+        display: flex;
+        vertical-align: middle;
+        label{
+           margin-left: .25rem;
+           line-height: 1.25rem;
+        }
+        input{
+            padding: .125rem .25rem;
+            width: 6rem;
+            background:  #e0dfdf;
+        }
+        justify-content: space-between;
+    }
+    .scroll-content{
+        background: #cccccc;
+    }
+    .list-container{   
+       font-size: .4rem;
+       ion-grid{
+           padding: 0;
+           border:.025rem solid#cccccc;    
+           ion-row{
+               ion-col{
+                  ion-grid{
+                    border:0;
+                    ion-row{
+                        padding: 0 0 .075rem;
+                    }
+                  }
+                  >div{
+                    .rtdata-icon{
+                       color: #488aff;
+                       padding: .1rem 0 .3rem; 
+                    }
+                    padding: .25rem;
+                    height: 2.5rem;
+                    background: #ffffff;
+                    border:.05rem solid#cccccc;
+                    border-radius: .125rem;
+                  }
+                  padding: 0;    
+               }
+           }
+           ion-row:nth-child(1){
+               ion-col:first-child{
+                  >div{   
+                    height: 4.5rem;
+                  }
+               }
+               ion-col:last-child{
+                  >div{   
+                    height: 5rem;
+                  }
+               }
+           }
+           ion-row:nth-child(2){
+                ion-col:first-child{
+                    >div {
+                        top: -0.5rem;
+                        position: absolute;
+                        width: 100%;   
+                        height: 4.5rem;
+                    }
+                }
+                ion-col:last-child{
+                    >div {
+                        height: 4rem;  
+                    }
+                }
+            }
+            ion-row:nth-child(3){  
+                ion-col{
+                   
+                }
+            }
+            ion-row:nth-child(4){  
+                ion-col{
+                   
+                }
+            } 
+       }
+   }
 }

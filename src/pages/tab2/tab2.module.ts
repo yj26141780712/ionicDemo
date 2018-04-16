@@ -10,7 +10,8 @@ import { BackButtonComponent } from '../../components/back-button/back-button';
     Tab2Page,BackButtonComponent
   ],
   imports: [
-    IonicPageModule.forChild(Tab2Page)
+    IonicPageModule.forChild(Tab2Page),
+    //ComponentsModule
   ],
 })
 export class Tab2PageModule {}

@@ -1,0 +1,41 @@
+pagination {
+    div{
+      display: flex;
+      height: 40px;
+      margin: .125rem 0;
+      justify-content: space-between;
+      button{
+        height: 40px;
+        width: auto;
+        color: #ffffff;
+        background:color($colors, primary);
+        margin-right: .125rem;
+        padding: 0 .35rem ;
+        font-size: .4rem;
+        border-radius: .1rem;        
+        span{
+           height: 40px; 
+           line-height: 40px;
+           //min-width: 40px;
+        }
+      }
+    //   @media screen and (max-width: 340px) { 
+    //     button { padding: 0 .35rem ;} 
+    //   } 
+      input{
+        width: 45px;
+        height: 40px;
+        line-height: 40px;
+        margin-right: .125rem; 
+        color: #ffffff;
+        background:color($colors, primary);
+        text-align: center;
+        border: .025rem solid color($colors, primary);
+        font-size: .4rem;
+        border-radius: .1rem;
+      }
+      button:last-child{
+        margin: 0;
+      }
+    }
+}

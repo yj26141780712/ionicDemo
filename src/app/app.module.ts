@@ -28,7 +28,9 @@ import { ComponentsModule } from '../components/components.module';
     IonicModule.forRoot(MyApp,{
       iconMode:'ios',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
       mode:'ios',//在整个应用程序中使用的模式。
-      backButtonText:''
+      backButtonText:'',
+      pageTransition: 'ios-transition',
+      tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
     }),
     HttpModule,
     HttpClientModule,

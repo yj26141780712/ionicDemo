@@ -1,5 +1,7 @@
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormControl } from '@angular/forms';
 
 /**
  * Generated class for the MachineListPage page.
@@ -15,11 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MachineListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  keyword:string;
+  keywordFilter:FormControl= new FormControl();
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams) {
+      // this.keywordFilter.valueChanges.debounceTime(500).subscribe(       
+      //   value => {this.keyword = value;console.log()}
+      // );
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MachineListPage');
   }
 
+  getItems(){
+    //
+  
+  }
 }

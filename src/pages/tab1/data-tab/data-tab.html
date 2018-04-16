@@ -13,6 +13,7 @@
   </ion-navbar>
 </ion-header>
 <ion-tabs tabsPlacement="top" selectedIndex="{{selectedIndex}}">
-  <ion-tab *ngFor="let tab of tabs" [root]="tab.name" [rootParams]="tab.params" tabTitle="{{tab.title}}">
+  <ion-tab *ngFor="let tab of tabs" [root]="tab.name" [rootParams]="tab.params" 
+  tabTitle="{{tab.title}}" >
   </ion-tab>
 </ion-tabs>
