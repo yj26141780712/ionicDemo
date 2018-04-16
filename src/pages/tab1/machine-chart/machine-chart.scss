@@ -1,3 +1,22 @@
 page-machine-chart {
-
+    ion-grid{
+        ion-row{
+            ion-col{           
+                background: rgb(20, 180, 33);
+                border:.05rem solid #ffffff;
+                border-radius: .15rem;
+                a{
+                    color: #ffffff;
+                    font-size: .325rem;
+                    height: 100%;
+                    span{
+                        display: block;
+                        margin: .1rem .25rem .05rem;
+                        border-bottom: .05rem solid #ffffff;
+                       // margin-bottom: .025rem solid #ffffff;
+                    }
+                }
+            }
+        }
+    }
 }

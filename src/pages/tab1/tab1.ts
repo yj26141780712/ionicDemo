@@ -62,8 +62,10 @@ export class Tab1Page {
       console.log(data); 
     }, true);
   }
-
-  goPage(page: string, index: Number) {     
-    if(page&&typeof index =="number") this.navCtrl.push(page, { index: index }); 
+  goDetails(item:any){
+      console.log(item);
+  }
+  goPage(page:string,index:Number) {
+    this.navCtrl.push(page, { index: index });
   }
 }

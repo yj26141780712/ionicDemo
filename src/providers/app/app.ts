@@ -11,14 +11,14 @@ export class AppGlobal {
         machines: "_dress_machines"
     }
     //接口基地址
-    static domain = "http://localhost:50525/"
-    //static domain = "http://192.168.3.3:8084/ionicDemoApi/"
-    接口地址
-    static API: any = {
-        getCategories: '/api/ionic3/getFunctions',
-        getProducts: '/api/ionic3/getMachines',
-        getDetails: '/api/ionic3/details'
-    };
+    //static domain = "http://localhost:50525/"
+    static domain = "http://192.168.3.3:8084/ionicDemoApi/"
+    //接口地址
+    // static API: any = {
+    //     getCategories: '/api/ionic3/getCategories',
+    //     getProducts: '/api/ionic3/getProducts',
+    //     getDetails: '/api/ionic3/details'
+    // };
 }
 
 @Injectable()
@@ -107,6 +107,7 @@ export class AppProvider {
             });
     }
 
+  
     httpPost(url, params, callback, loader: boolean = false) {
         let loading = this.loadingCtrl.create();
         if (loader) {
@@ -128,6 +129,14 @@ export class AppProvider {
             });
     }
 
+    httpPut(url:string,params:any,callback,loader:boolean){
+        
+        this.http.put(AppGlobal.domain+url,params)
+            .toPromise()
+            .then(res=>{
+
+            })
+    }
     private handleError(error: Response | any) {
         let msg = '';
         if (error.status == 400) {

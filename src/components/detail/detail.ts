@@ -1,6 +1,7 @@
 import { ViewController, NavParams } from 'ionic-angular';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 /**
  * Generated class for the DetailComponent component.

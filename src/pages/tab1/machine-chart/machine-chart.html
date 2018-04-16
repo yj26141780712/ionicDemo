@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
-   
+  <ion-grid text-center>
+    <ion-row *ngFor="let row of machineList">
+      <ion-col *ngFor="let col of row">
+        <a>
+          编号
+          <br> {{col.serialNumber}}
+          <span></span>
+          {{col.state}}
+          <br> {{col.motion}}
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

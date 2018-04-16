@@ -1,3 +1,10 @@
 page-data-tab {
-    
+    a[aria-selected=true]{
+        .tab-button-text::after{
+            content: "";
+            padding: .05rem;
+            display: block;
+            border-bottom: .05rem solid color($colors,primary); //#488aff
+        }
+    }    
 }
