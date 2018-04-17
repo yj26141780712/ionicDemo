@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, Slides } from 'ionic-angular';
 import { AppProvider } from '../../providers/app/app';
 
 @IonicPage()
@@ -9,7 +9,7 @@ import { AppProvider } from '../../providers/app/app';
 })
 export class Tab1Page {
 
-
+  @ViewChild(Slides) slide: Slides;
   state: boolean = false;
   slides: Array<any> = [];
   spinner1: boolean;
@@ -18,6 +18,14 @@ export class Tab1Page {
     this.getSlides();
     this.getFunctions();
     //this.getProducts();
+    
+  }
+  
+  ionViewDidLoad(){
+    console.log("我开启了自动!");
+    console.log(this.slide);
+    this.slide.autoplay=200;
+    this.slide.startAutoplay();
   }
   //获取幻灯片
   getSlides() {
@@ -36,7 +44,9 @@ export class Tab1Page {
       }
     ];
     this.spinner1 = false;
+    
   }
+
   getFunctions() {
     // this.functions = [ 
     //   [
@@ -64,6 +74,7 @@ export class Tab1Page {
   goDetails(item:any){
       console.log(item);
       this.ap.alert(item.pictUrl);
+      this.slide.slideTo(2, 500);
   }
   goPage(page:string,index:Number) {
     console.log(page,index);

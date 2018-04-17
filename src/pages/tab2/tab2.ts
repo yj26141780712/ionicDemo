@@ -32,12 +32,14 @@ export class Tab2Page {
       { name: "模态框", action: "testModal" },
       { name: "Echart表格", action: "testEchart" },
       { name: "测试http链式", action: "http" },
-      { name: "测试Post接口", action: "httpPost" }
+      { name: "测试Post接口", action: "httpPost" },
+      { name: "测试Swiper", action: "testSwiper" }
     ]
     console.log(this.items);
   }
 
   click(action: string) {
+    //console.log("我执行了？",action);
     switch (action) {
       case "testModal":
         this.testModal();
@@ -50,6 +52,10 @@ export class Tab2Page {
         break;
       case "httpPost":
         this.testPost();
+        break;
+      case "testSwiper":
+        this.testSwiper();
+        break;
       default: ""
         break;
     }
@@ -108,5 +114,9 @@ export class Tab2Page {
         console.log(res.json());
         this.ap.alert(res);
       });
+  }
+
+  testSwiper(){
+    this.navCtrl.push("SwiperPage");
   }
 }

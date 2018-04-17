@@ -13,7 +13,7 @@
     </ion-col>
   </ion-row>
   <ion-slides>
-    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)">
+    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)" autoplay="300" >
       <img src="{{item.pictUrl}}" alt="">
       <div class="cover"></div>
       <!-- <span class="title">{{item.title}}</span> -->
