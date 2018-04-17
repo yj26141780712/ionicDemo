@@ -23,37 +23,36 @@ export class Tab1Page {
   getSlides() {
     this.slides = [
       {
-        pictUrl: "../../assets/imgs/slider1.jpg",
+        pictUrl: "./../assets/imgs/slider1.jpg",
         title: "标题一"
       },
       {
-        pictUrl: "../../assets/imgs/slider2.jpg",
+        pictUrl: "./../assets/imgs/slider2.jpg",
         title: "标题二"
       },
       {
-        pictUrl: "../../assets/imgs/slider3.jpg",
+        pictUrl: "./../assets/imgs/slider3.jpg",
         title: "标题三"
       }
     ];
     this.spinner1 = false;
   }
   getFunctions() {
-    // let url = "api/function";
     // this.functions = [ 
     //   [
-    //     [{ name: "实时数据", page: "RtdataPage", index: 0, icon: "globe" }],
-    //     [{ name: "机器图表", page: "MachineChartPage", index: 1, icon: null }, { name: "润滑信息", page: "LubricationInfoPage", index: 3, icon: null }],
-    //     [{ name: "机器列表", page: "MachineListPage", index: 2, icon: null }, { name: "", page: "", index: null, icon: null }]
+    //     [{ moduleName: "实时数据", page: "RtdataPage", index: 0, icon: "globe" }],
+    //     [{ moduleName: "机器图表", page: "MachineChartPage", index: 1, icon: null }, { moduleName: "润滑信息", page: "LubricationInfoPage", index: 3, icon: null }],
+    //     [{ moduleName: "机器列表", page: "MachineListPage", index: 2, icon: null }, { moduleName: "", page: "", index: null, icon: null }]
     //   ],
     //   [
-    //     [{ name: "实时数据", page: "", index: 1, icon: "laptop" }],
-    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }],
-    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "", page: "", index: 1, icon: "" }]
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "laptop" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "", page: "", index: 1, icon: "" }]
     //   ],
     //   [
-    //     [{ name: "实时数据", page: "", index: 1, icon: "construct" }],
-    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }],
-    //     [{ name: "实时数据", page: "", index: 1, icon: "" }, { name: "实时数据", page: "", index: 1, icon: "" }]
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "construct" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }]
     //   ]
     // ]  
     let url="api/function";

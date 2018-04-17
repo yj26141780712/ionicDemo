@@ -93,8 +93,7 @@ export class Tab2Page {
         return this.http.get(AppGlobal.domain + "api/role/1/users/1").toPromise();
       })
       .then(res => {
-        console.log(res.json());
-        //console.log(Name);
+        //console.log(res.json());
         this.ap.httpGet("api/machine", {}, data => {
           console.log(data);
         }, true);

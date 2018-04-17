@@ -25,7 +25,7 @@ export class LoadingPage {
   presentLoadingDefault() {
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
-      content: `加载中`,
+      content: ``,
       cssClass: "loginLoadingPage",
       showBackdrop: false
     });
