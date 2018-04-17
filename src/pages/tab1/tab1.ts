@@ -9,7 +9,7 @@ import { AppProvider } from '../../providers/app/app';
 })
 export class Tab1Page {
 
-  @ViewChild(Slides) slide: Slides;
+  @ViewChild(Slides) myslide: Slides;
   state: boolean = false;
   slides: Array<any> = [];
   spinner1: boolean;
@@ -18,14 +18,18 @@ export class Tab1Page {
     this.getSlides();
     this.getFunctions();
     //this.getProducts();
-    
+
   }
-  
-  ionViewDidLoad(){
+
+  ionViewDidLoad() {
     console.log("我开启了自动!");
-    console.log(this.slide);
-    this.slide.autoplay=200;
-    this.slide.startAutoplay();
+    console.log(this.myslide);
+    console.log(this.myslide.startAutoplay); 
+    //this.slide.autoplay=200;
+    //this.myslide.startAutoplay();
+  }
+  ionViewDidLeave() {
+    this.myslide.stopAutoplay();
   }
   //获取幻灯片
   getSlides() {
@@ -44,7 +48,7 @@ export class Tab1Page {
       }
     ];
     this.spinner1 = false;
-    
+
   }
 
   getFunctions() {
@@ -65,19 +69,19 @@ export class Tab1Page {
     //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }]
     //   ]
     // ]  
-    let url="api/function";
+    let url = "api/function";
     this.ap.httpGet(url, {}, (data) => {
       this.functions = data
-      console.log(data); 
+      console.log(data);
     }, true);
   }
-  goDetails(item:any){
-      console.log(item);
-      this.ap.alert(item.pictUrl);
-      this.slide.slideTo(2, 500);
+  goDetails(item: any) {
+    console.log(item);
+    this.ap.alert(item.pictUrl);
+    //this.myslide.slideTo(2, 500);
   }
-  goPage(page:string,index:Number) {
-    console.log(page,index);
-    if(page&&typeof index==="number")this.navCtrl.push(page, { index: index });
+  goPage(page: string, index: Number) {
+    console.log(page, index);
+    if (page && typeof index === "number") this.navCtrl.push(page, { index: index });
   }
 }
