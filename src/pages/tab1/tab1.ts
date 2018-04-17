@@ -23,15 +23,15 @@ export class Tab1Page {
   getSlides() {
     this.slides = [
       {
-        pictUrl: "./../assets/imgs/slider1.jpg",
+        pictUrl: "../assets/imgs/slider1.png",
         title: "标题一"
       },
       {
-        pictUrl: "./../assets/imgs/slider2.jpg",
+        pictUrl: "../assets/imgs/slider2.png",
         title: "标题二"
       },
       {
-        pictUrl: "./../assets/imgs/slider3.jpg",
+        pictUrl: "../assets/imgs/slider3.png",
         title: "标题三"
       }
     ];
@@ -63,6 +63,7 @@ export class Tab1Page {
   }
   goDetails(item:any){
       console.log(item);
+      this.ap.alert(item.pictUrl);
   }
   goPage(page:string,index:Number) {
     console.log(page,index);
