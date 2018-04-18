@@ -21,10 +21,14 @@ export class MyApp {
     public ionicApp: IonicApp,
     public keyboard: Keyboard) {
     platform.ready().then(() => {
-      statusBar.styleDefault();
+      //statusBar.styleDefault();
+      statusBar.hide();
       splashScreen.hide();
+      //console.log(this.platform);  
       console.log(this.ionicApp);
       this.registerBackButtonAction();
+      console.log(this.nav);
+     // console.log(this.nav.getActive());
     });
   }
 
@@ -51,7 +55,7 @@ export class MyApp {
         return;
       }
       let activeVC = this.nav.getActive();
-      alert(page instanceof TabsPage);
+      //let isHasChild = this.nav.getActiveChildNavs();
       let page = activeVC.instance;
       if (!(page instanceof TabsPage)) {
         if (!this.nav.canGoBack()) {

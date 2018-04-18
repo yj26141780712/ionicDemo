@@ -12,8 +12,8 @@ export class AppGlobal {
     }
     //接口基地址
     //static domain = "http://localhost:50525/" 
-    //static domain = "http://192.168.3.158:50525/" 
-    static domain = "http://192.168.3.158:8084/ionicDemoApi/";
+    static domain = "http://192.168.3.3:8084/ionicDemoApi/" 
+    //static domain = "http://192.168.3.158:8084/ionicDemoApi/";
     //接口地址
 }
 

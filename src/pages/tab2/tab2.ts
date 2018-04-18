@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, App } from 'ionic-angular';
 import { DetailComponent } from '../../components/detail/detail';
 import { AppProvider, AppGlobal } from '../../providers/app/app';
 
@@ -23,7 +23,7 @@ export class Tab2Page {
   @ViewChild('container') container: ElementRef;
 
   items: any;
-  constructor(public navCtrl: NavController,
+  constructor(public app: App,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public http: Http,
@@ -33,7 +33,8 @@ export class Tab2Page {
       { name: "Echart表格", action: "testEchart" },
       { name: "测试http链式", action: "http" },
       { name: "测试Post接口", action: "httpPost" },
-      { name: "测试Swiper", action: "testSwiper" }
+      { name: "测试Swiper", action: "testSwiper" },
+      { name: "测试Nav", action: "testNav" } 
     ]
     console.log(this.items);
   }
@@ -55,6 +56,9 @@ export class Tab2Page {
         break;
       case "testSwiper":
         this.testSwiper();
+        break;
+      case "testNav":
+        this.testNav();
         break;
       default: ""
         break;
@@ -79,7 +83,7 @@ export class Tab2Page {
 
   testEchart() {
     //this.navCtrl.popAll();
-    this.navCtrl.push("ChartsPage");
+    this.app.getRootNavs()[0].push("ChartsPage");
   }
   testHttp() {
     // this.a().then(res=>{
@@ -115,8 +119,10 @@ export class Tab2Page {
         this.ap.alert(res);
       });
   }
-
-  testSwiper(){
-    this.navCtrl.push("SwiperPage");
+  testSwiper() {
+    this.app.getRootNavs()[0].push("SwiperPage");
+  }
+  testNav(){
+    this.app.getRootNavs()[0].push("TestNavPage"); 
   }
 }

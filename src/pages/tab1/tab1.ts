@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Slides } from 'ionic-angular';
+import { IonicPage, NavController, Slides, App } from 'ionic-angular';
 import { AppProvider } from '../../providers/app/app';
 
 @IonicPage()
@@ -14,13 +14,13 @@ export class Tab1Page {
   slides: Array<any> = [];
   spinner1: boolean;
   functions: Array<any> = [];
-  constructor(public ap: AppProvider, public navCtrl: NavController) {
+  constructor(public ap: AppProvider, public app:App,) {
     this.getSlides();
     this.getFunctions();
   }
 
   ionViewDidLoad() {
-   // console.log("我开启了自动!");
+    // console.log("我开启了自动!");
     //this.myslide.startAutoplay();
   }
   ionViewDidEnter() {
@@ -82,6 +82,12 @@ export class Tab1Page {
   }
   goPage(page: string, index: Number) {
     //console.log(page, index); 
-    if (page && typeof index === "number") this.navCtrl.push(page, { index: index });
+    if (page && typeof index === "number") {
+      //this.app.getRootNav().push(page,{ index: index });
+      console.log(this.app);
+      console.log(this.app.getRootNavs());
+      this.app.getRootNavs()[0].push(page,{ index: index });
+    }
+    //this.navCtrl.push(page, { index: index });
   }
 }
