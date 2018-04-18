@@ -12,8 +12,8 @@
       <ion-spinner></ion-spinner>
     </ion-col>
   </ion-row>
-  <ion-slides #Myslide>
-    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)" pager="true" loop="true" autoplay="3000" >
+  <ion-slides #Myslide pager="true" loop="true" autoplay="3000" >
+    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)" >
       <img src="{{item.pictUrl}}" alt="">
       <div class="cover"></div>
       <!-- <span class="title">{{item.title}}</span> -->

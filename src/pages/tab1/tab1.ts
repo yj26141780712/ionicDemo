@@ -17,16 +17,15 @@ export class Tab1Page {
   constructor(public ap: AppProvider, public navCtrl: NavController) {
     this.getSlides();
     this.getFunctions();
-    //this.getProducts();
-
   }
 
   ionViewDidLoad() {
-    console.log("我开启了自动!");
-    console.log(this.myslide);
-    console.log(this.myslide.startAutoplay); 
-    //this.slide.autoplay=200;
+   // console.log("我开启了自动!");
     //this.myslide.startAutoplay();
+  }
+  ionViewDidEnter() {
+    this.myslide.autoplayDisableOnInteraction = false;
+    this.myslide.startAutoplay();
   }
   ionViewDidLeave() {
     this.myslide.stopAutoplay();
@@ -35,15 +34,15 @@ export class Tab1Page {
   getSlides() {
     this.slides = [
       {
-        pictUrl: "../assets/imgs/slider1.png",
+        pictUrl: "./assets/imgs/slider1.png",
         title: "标题一"
       },
       {
-        pictUrl: "../assets/imgs/slider2.png",
+        pictUrl: "./assets/imgs/slider2.png",
         title: "标题二"
       },
       {
-        pictUrl: "../assets/imgs/slider3.png",
+        pictUrl: "./assets/imgs/slider3.png",
         title: "标题三"
       }
     ];
@@ -72,16 +71,17 @@ export class Tab1Page {
     let url = "api/function";
     this.ap.httpGet(url, {}, (data) => {
       this.functions = data
-      console.log(data);
+      //this.ap.alert(data);
+      //console.log(data);
     }, true);
   }
   goDetails(item: any) {
-    console.log(item);
+    //console.log(item);
     this.ap.alert(item.pictUrl);
     //this.myslide.slideTo(2, 500);
   }
   goPage(page: string, index: Number) {
-    console.log(page, index);
+    //console.log(page, index); 
     if (page && typeof index === "number") this.navCtrl.push(page, { index: index });
   }
 }

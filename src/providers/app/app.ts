@@ -11,8 +11,9 @@ export class AppGlobal {
         machines: "_dress_machines"
     }
     //接口基地址
-    static domain = "http://localhost:50525/"
-    //static domain = "http://192.168.3.3:8084/ionicDemoApi/"
+    //static domain = "http://localhost:50525/" 
+    //static domain = "http://192.168.3.158:50525/" 
+    static domain = "http://192.168.3.158:8084/ionicDemoApi/";
     //接口地址
 }
 
@@ -79,6 +80,7 @@ export class AppProvider {
 
 
     httpGet(url, params, callback, loader: boolean = false) {
+        //alert(AppGlobal.domain + url + this.encode(params)); 
         let loading = this.loadingCtrl.create({});
         if (loader) {
             loading.present();
