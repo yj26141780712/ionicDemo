@@ -14,5 +14,118 @@
 
 
 <ion-content padding>
-  我是机器列表页面
+  <div class="search-container">
+    <div class="search-input">
+      <ion-searchbar (ionInput)="getItems($event)" placeholder="如:ty-00001"></ion-searchbar>
+    </div>
+    <div class="search-button">
+        <button ion-button>搜索</button>
+    </div>
+  </div>
+  <div class="list-container">
+    <table>
+      <thead>
+        <tr>
+          <th>标题一</th>
+          <th>标题二</th>
+          <th>标题三</th>
+          <th>标题四</th>
+          <th>标题五</th>
+          <th>标题六</th>
+          <th>标题七</th>
+          <th>标题八</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+        <tr>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+          <td>内容一</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-footer">
+      <!-- <button ion-button>首页</button>
+      <button ion-button>上一页</button>
+      <input type="text">
+      <button ion-button>下一页</button>
+      <button ion-button>末页</button> -->
+      <pagination></pagination>
+  </div>
 </ion-content>

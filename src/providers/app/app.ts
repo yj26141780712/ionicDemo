@@ -7,18 +7,14 @@ export class AppGlobal {
     //缓存key的配置
     static cache: any = {
         slides: "_dress_slides",
-        categories: "_dress_categories",
-        products: "_dress_products"
+        functions: "_dress_functions",
+        machines: "_dress_machines"
     }
     //接口基地址
-    //static domain = "http://localhost:50525/"
-    static domain = "http://192.168.3.3:8084/ionicDemoApi/"
+    //static domain = "http://localhost:50525/" 
+    static domain = "http://192.168.3.3:8084/ionicDemoApi/" 
+    //static domain = "http://192.168.3.158:8084/ionicDemoApi/";
     //接口地址
-    // static API: any = {
-    //     getCategories: '/api/ionic3/getCategories',
-    //     getProducts: '/api/ionic3/getProducts',
-    //     getDetails: '/api/ionic3/details'
-    // };
 }
 
 @Injectable()
@@ -30,7 +26,6 @@ export class AppProvider {
         private toastCtrl: ToastController, ) { }
 
     // 表单校验
-
     formValidate(controls: any): string {
         for (let key in controls) { //遍历对象使用for in
             let ct = controls[key];
@@ -65,12 +60,10 @@ export class AppProvider {
         return null;
     }
 
-    getName(name):string{
-        //document.getElementsByName(name)
-        return null;
-    }
-
-    // 对参数进行编码
+    /**
+     * 对参数进行编码
+     * @param params 
+     */
     encode(params) {
         var str = '';
         if (params) {
@@ -85,7 +78,9 @@ export class AppProvider {
         return str;
     }
 
+
     httpGet(url, params, callback, loader: boolean = false) {
+        //alert(AppGlobal.domain + url + this.encode(params)); 
         let loading = this.loadingCtrl.create({});
         if (loader) {
             loading.present();
@@ -107,6 +102,7 @@ export class AppProvider {
             });
     }
 
+  
     httpPost(url, params, callback, loader: boolean = false) {
         let loading = this.loadingCtrl.create();
         if (loader) {
@@ -128,8 +124,7 @@ export class AppProvider {
             });
     }
 
-    httpPut(url:string,params:any,callback,loader:boolean){
-        
+    httpPut(url:string,params:any,callback,loader:boolean){       
         this.http.put(AppGlobal.domain+url,params)
             .toPromise()
             .then(res=>{
@@ -212,4 +207,6 @@ export class AppProvider {
             console.error("window.localStorage error:" + e);
         }
     }
+
+    
 }

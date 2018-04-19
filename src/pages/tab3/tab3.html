@@ -6,9 +6,37 @@
     <ion-title text-center>个人中心</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  
-   <button (click)="goLogin()">
+<ion-content>
+  <ion-list class="list-user">
+    <ion-item>
+      <div class="userInfo">
+        <img src="./assets/imgs/slider2.png" alt=""> 
+        <div>
+          <div>用户名1</div>
+          <div>UID:yangjie</div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-list class="list-user">
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+  </ion-list>
+  <ion-list class="list-user">
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+    <ion-item>
+      <ion-icon name="home"></ion-icon> 系统管理</ion-item>
+  </ion-list>
+  <ion-list class="list-user">
+    <ion-item text-center (click)="goLogin()">
       退出系统
-   </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

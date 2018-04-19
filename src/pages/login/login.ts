@@ -1,7 +1,7 @@
 import { AppProvider } from './../../providers/app/app';
 import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events, Platform } from 'ionic-angular';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { SignPage } from '../sign/sign';
@@ -28,42 +28,44 @@ export class LoginPage {
     public ap: AppProvider,
     public modalCtrl: ModalController,
     public storage: Storage,
-    public event:Events) {
+    public event: Events) {
     this.loginForm = fb.group({
       'username': [''],
       'password': ['']
     });
   }
-  ionViewDidLoad() { 
-    this.storage.get('userinfo').then((value) => {
+  ionViewDidLoad() {
+    this.storage.get('userinfo').then(value => {
       if (value) this.loginForm.reset(value);
+    }).catch(err => {
+      console.log(err);
     });
     this.listenEvents();
-    console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
+    //console.log("1.0 ionViewDidLoad 当页面加载的时候触发，仅在页面创建的时候触发一次，如果被缓存了，那么下次再打开这个页面则不会触发");
   }
 
   ionViewWillEnter() {
-    console.log("2.0 ionViewWillEnter 顾名思义，当将要进入页面时触发");
+    //console.log("2.0 ionViewWillEnter 顾名思义，当将要进入页面时触发");
   }
   ionViewDidEnter() {
-    console.log("3.0 ionViewDidEnter 当进入页面时触发");
+    //console.log("3.0 ionViewDidEnter 当进入页面时触发");
   }
   ionViewWillLeave() {
-    console.log("4.0 ionViewWillLeave 当将要从页面离开时触发");
+    //console.log("4.0 ionViewWillLeave 当将要从页面离开时触发");
   }
   ionViewDidLeave() {
-    console.log("5.0 ionViewDidLeave 离开页面时触发");
+    //console.log("5.0 ionViewDidLeave 离开页面时触发");
   }
   ionViewWillUnload() {
-    console.log("6.0 ionViewWillUnload 当页面将要销毁同时页面上元素移除时触发");
+    //console.log("6.0 ionViewWillUnload 当页面将要销毁同时页面上元素移除时触发");
   }
 
   ionViewCanEnter() {
-    console.log("ionViewCanEnter");
+    //console.log("ionViewCanEnter");
   }
 
   ionViewCanLeave() {
-    console.log("ionViewCanLeave");
+    //console.log("ionViewCanLeave");
   }
 
   onSubmit() {
@@ -75,22 +77,26 @@ export class LoginPage {
    */
   login() {
     let url = "api/role/1/user";
-    this.ap.httpGet(url, 
+    // this.storage.set('userinfo', this.loginForm.value);
+    // this.navCtrl.setRoot(HomePage, {
+    //   userInfo: this.loginForm.value
+    // });
+    this.ap.httpGet(url,
       {
-        username:this.loginForm.value.username,
-        password:this.loginForm.value.password
-      }, 
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password
+      },
       (data) => {
-      console.log(data);
-      if(data=="[]"){
-        this.ap.toast('用户名或密码错误!');
-      }else{
-        this.storage.set('userinfo', this.loginForm.value);
-        this.navCtrl.setRoot(HomePage, {
-          userInfo: this.loginForm.value
-        });
-      }
-    }, true);
+        // console.log(data);
+        if (data == "[]") {
+          this.ap.toast('用户名或密码错误!');
+        } else {
+          this.storage.set('userinfo', this.loginForm.value);
+          this.navCtrl.setRoot(HomePage, {
+            userInfo: this.loginForm.value
+          });
+        }
+      }, true);
   }
 
   /**
@@ -112,9 +118,9 @@ export class LoginPage {
    * 打开注册页面
    */
   presentSignModal() {
-    let profileModal = this.modalCtrl.create(SignPage, 
+    let profileModal = this.modalCtrl.create(SignPage,
       { username: this.loginForm.controls["username"].value },
-      { showBackdrop:true}
+      { showBackdrop: true }
     );
     profileModal.onDidDismiss(data => {
       if (data) {
@@ -124,15 +130,15 @@ export class LoginPage {
     });
     profileModal.present();
   }
-  
+
   /**
    * 监听退出
    */
-  listenEvents(){
-    this.event.subscribe("tologin",()=>{  
+  listenEvents() {
+    this.event.subscribe("tologin", () => {
       //this.storage.remove('userinfo');
-        console.log("退出登陆！");
-        this.navCtrl.setRoot("LoginPage");
+      console.log("退出登陆！");
+      this.navCtrl.setRoot("LoginPage");
     })
   }
 }

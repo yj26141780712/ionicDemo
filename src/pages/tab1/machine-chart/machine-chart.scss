@@ -11,11 +11,19 @@ page-machine-chart {
                     height: 100%;
                     span{
                         display: block;
-                        border: .025rem solid #ffffff;
-                        margin: .125rem .25rem;
+                        margin: .1rem .25rem .05rem;
+                        border-bottom: .05rem solid #ffffff;
+                       // margin-bottom: .025rem solid #ffffff;
                     }
                 }
             }
         }
+    }
+}
+
+ion-modal{
+    .title{
+        font-size: 1rem;
+        color: red;
     }
 }

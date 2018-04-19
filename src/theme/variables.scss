@@ -64,8 +64,9 @@ $segment-button-ios-font-size: rem(13);
 $segment-button-ios-toolbar-font-size: rem(12);
 $segment-button-md-font-size: rem(12);
 $segment-button-wp-font-size: rem(13);
-$tabs-md-tab-font-size: rem(14);
-$tabs-md-tab-font-size-active: rem(16); 
+$tabs-ios-tab-min-height:rem(52);   
+$tabs-md-tab-font-size: rem(12);
+$tabs-md-tab-font-size-active: rem(14);
 $tabs-wp-tab-font-size: rem(12);
 $toast-ios-title-font-size: rem(14);
 $toast-md-title-font-size: rem(15);
@@ -174,7 +175,7 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222,
+  dark:       #222, 
   wihte-black:(
     base: #ffffff, 
     contrast: black

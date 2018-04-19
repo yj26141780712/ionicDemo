@@ -13,6 +13,54 @@
 </ion-header>
 
 
-<ion-content padding>
-  我是实时数据页面
+<ion-content>
+  <div class="serach-area">
+    <label for="input-area">地区选择:</label>
+    <input type="text" name="input-area" placeholder="如:宁波">
+    <button ion-button>更换</button>
+  </div>
+  <div class="list-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <div class="rtdata-icon">
+              <ion-icon name="{{rtData?.machineInfo?.icon}}"></ion-icon>
+              <span>{{ rtData?.machineInfo?.title }}</span>
+            </div>
+            <ion-grid>
+              <ion-row *ngFor="let data of rtData?.machineInfo?.datas">
+                <ion-col>
+                  {{ data.title?data.title+':':"" }} {{ data.value }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>机器状态</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>警报详情</div>
+        </ion-col>
+        <ion-col>
+          <div>主机时间</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>成品监测</div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>料筒温度</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
 </ion-content>

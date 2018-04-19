@@ -1,8 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary" hideBackButton="true">
-    <button class="menu-button" menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-navbar color="primary">
     <ion-title text-center>首页</ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,8 +9,8 @@
       <ion-spinner></ion-spinner>
     </ion-col>
   </ion-row>
-  <ion-slides>
-    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)">
+  <ion-slides #Myslide pager="true" loop="true" autoplay="3000" >
+    <ion-slide *ngFor="let item of slides" (click)="goDetails(item)" >
       <img src="{{item.pictUrl}}" alt="">
       <div class="cover"></div>
       <!-- <span class="title">{{item.title}}</span> -->
@@ -21,78 +18,11 @@
   </ion-slides>
   <div class="home-container">
     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <a nghref="#" (click)="goPage('DataTabPage',0)" >
-            <em>实时数据</em>
-            <ion-icon name="globe"></ion-icon>
-          </a>
-        </ion-col>
-        <ion-col  >
-          <a nghref="#" (click)="goPage('DataTabPage',1)">
-            <em>机器图表</em>
-          </a>
-          <a nghref="#" (click)="goPage('DataTabPage',3)">
-            <em>润滑信息</em>
-          </a>
-        </ion-col>
-        <ion-col>
-          <a nghref="#" (click)="goPage('DataTabPage',2)">
-            <em>机器列表</em>
-
-          </a>
-          <a>
-
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <a>
-            <em>实时数据</em>
-            <ion-icon name="laptop"></ion-icon>
-          </a>
-        </ion-col>
-        <ion-col>
-          <a>
-            <em>机器图表</em>
-          </a>
-          <a>
-            <em>润滑信息</em>
-          </a>
-        </ion-col>
-        <ion-col>
-          <a>
-            <em>机器列表</em>
-
-          </a>
-          <a>
-
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <a>
-            <em>实时数据</em>
-            <ion-icon name="construct"></ion-icon>
-          </a>
-        </ion-col>
-        <ion-col>
-          <a>
-            <em>机器图表</em>
-          </a>
-          <a>
-            <em>润滑信息</em>
-          </a>
-        </ion-col>
-        <ion-col>
-          <a>
-            <em>机器列表</em>
-
-          </a>
-          <a>
-
+      <ion-row *ngFor="let arr1 of functions">
+        <ion-col *ngFor="let arr2 of arr1.childFunc">
+          <a *ngFor="let arr3 of arr2.childFunc" (click)="goPage(arr1.page,arr3.index)">
+            <em>{{ arr3.moduleName }}</em>
+            <ion-icon *ngIf="arr3.icon" name="{{arr3.icon}}"></ion-icon>
           </a>
         </ion-col>
       </ion-row>

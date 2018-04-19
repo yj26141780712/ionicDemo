@@ -1,3 +1,4 @@
+import { AppProvider } from './../../providers/app/app';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
@@ -15,14 +16,19 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 })
 export class Tab3Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private event:Events) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private event: Events,
+    private ap: AppProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab3Page');
   }
 
-  goLogin(){
-    this.event.publish("tologin");
+  goLogin() {
+    this.ap.alert("确定要退出!", () => {
+      this.event.publish("tologin");
+    })
   }
 }

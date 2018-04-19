@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ionicDemo</name>
+<widget id="io.ionic.starter" version="0.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DemobyYangjie</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -82,5 +82,12 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.0" />
+<<<<<<< HEAD
     <engine name="android" spec="~7.0.0" />
+=======
+    <allow-navigation href="http://192.168.3.3:8100" />
+    <allow-navigation href="http://192.168.207.1:8100" />
+    <engine name="android" spec="7.0.0" />
+    <engine name="browser" spec="5.0.3" />
+>>>>>>> 6d8a46b65cd93df5b2a8ca2eab61af8063d64739
 </widget>

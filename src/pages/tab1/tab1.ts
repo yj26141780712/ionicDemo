@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, Slides, App } from 'ionic-angular';
 import { AppProvider } from '../../providers/app/app';
 
 @IonicPage()
@@ -9,84 +9,85 @@ import { AppProvider } from '../../providers/app/app';
 })
 export class Tab1Page {
 
-
+  @ViewChild(Slides) myslide: Slides;
   state: boolean = false;
   slides: Array<any> = [];
   spinner1: boolean;
   functions: Array<any> = [];
-  constructor(public ap: AppProvider, public navCtrl: NavController) {
+  constructor(public ap: AppProvider, public app:App,) {
     this.getSlides();
     this.getFunctions();
-    //this.getProducts();
+  }
+
+  ionViewDidLoad() {
+    // console.log("我开启了自动!");
+    //this.myslide.startAutoplay();
+  }
+  ionViewDidEnter() {
+    this.myslide.autoplayDisableOnInteraction = false;
+    this.myslide.startAutoplay();
+  }
+  ionViewDidLeave() {
+    this.myslide.stopAutoplay();
   }
   //获取幻灯片
   getSlides() {
     this.slides = [
       {
-        pictUrl: "../../assets/imgs/slider1.jpg",
+        pictUrl: "./assets/imgs/slider1.png",
         title: "标题一"
       },
       {
-        pictUrl: "../../assets/imgs/slider2.jpg",
+        pictUrl: "./assets/imgs/slider2.png",
         title: "标题二"
       },
       {
-        pictUrl: "../../assets/imgs/slider3.jpg",
+        pictUrl: "./assets/imgs/slider3.png",
         title: "标题三"
       }
     ];
     this.spinner1 = false;
+
   }
+
   getFunctions() {
-    // let url = "api/function";
-    this.functions = [
-      {
-        id: 1, name: "模块1",
-        pageChild: [
-          {
-            id: 11, name: "模块11",
-            pageChild: [
-              {
-                id: 111,
-                name: "实时数据",
-              }
-            ]
-          }, {
-            id: 12, name: "模块12",
-            pageChild: [
-              {
-                id: 121,
-                name: "机器图标",
-              },
-              {
-                id: 122,
-                name: "润滑信息",
-              }
-            ]
-          }, {
-            id: 13, name: "模块13",
-            pageChild: [
-              {
-                id: 131,
-                name: "机器",
-              },
-              {
-                id: 132,
-                name: "",
-              }
-            ]
-          }]
-      },
-    ]
-    // this.ap.httpGet(url, {}, (data) => {
-    //   this.functions = data
-    //   console.log(data);
-    // }, true);
+    // this.functions = [ 
+    //   [
+    //     [{ moduleName: "实时数据", page: "RtdataPage", index: 0, icon: "globe" }],
+    //     [{ moduleName: "机器图表", page: "MachineChartPage", index: 1, icon: null }, { moduleName: "润滑信息", page: "LubricationInfoPage", index: 3, icon: null }],
+    //     [{ moduleName: "机器列表", page: "MachineListPage", index: 2, icon: null }, { moduleName: "", page: "", index: null, icon: null }]
+    //   ],
+    //   [
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "laptop" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "", page: "", index: 1, icon: "" }]
+    //   ],
+    //   [
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "construct" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }],
+    //     [{ moduleName: "实时数据", page: "", index: 1, icon: "" }, { moduleName: "实时数据", page: "", index: 1, icon: "" }]
+    //   ]
+    // ]  
+    let url = "api/function";
+    this.ap.httpGet(url, {}, (data) => {
+      this.functions = data
+      //this.ap.alert(data);
+      //console.log(data);
+    }, true);
   }
-  goDetails(item:any){
-      console.log(item);
+  goDetails(item: any) {
+    //console.log(item);
+    this.ap.alert(item.pictUrl);
+    //this.myslide.slideTo(2, 500);
   }
-  goPage(page:string,index:Number) {
-    this.navCtrl.push(page, { index: index });
+  goPage(page: string, index: Number) {
+    //console.log(page, index); 
+    if (page && typeof index === "number") {
+      //this.app.getRootNav().push(page,{ index: index });
+      console.log(this.app);
+      console.log(this.app.getRootNavs());
+      this.app.getRootNavs()[0].push(page,{ index: index });
+    }
+    //this.navCtrl.push(page, { index: index });
   }
 }

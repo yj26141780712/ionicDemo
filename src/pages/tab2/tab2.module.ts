@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { Tab2Page } from './tab2';
-import { NgxEchartsModule } from 'ngx-echarts';
+//import { DetailComponent } from '../../components/detail/detail';
+import { BackButtonComponent } from '../../components/back-button/back-button';
 
 @NgModule({
   declarations: [
-    Tab2Page,
+    Tab2Page,BackButtonComponent
   ],
   imports: [
     IonicPageModule.forChild(Tab2Page),
-    NgxEchartsModule
+    //ComponentsModule
   ],
 })
 export class Tab2PageModule {}

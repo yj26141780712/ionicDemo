@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -15,7 +15,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FunctionProvider } from '../providers/function/function';
 import { BackButtonComponent } from '../components/back-button/back-button';
 import { ComponentsModule } from '../components/components.module';
-import { NgxEchartsModule} from 'ngx-echarts';
+//import { NgxEchartsModule} from 'ngx-echarts';
 
 
 @NgModule({
@@ -26,17 +26,22 @@ import { NgxEchartsModule} from 'ngx-echarts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{
-      iconMode:'md',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
-      mode:'md'//在整个应用程序中使用的模式。
+      iconMode:'ios',//  在整个应用程序中为所有图标使用的模式。可用选项："ios"，"md"
+      mode:'ios',//在整个应用程序中使用的模式。
+      backButtonText:'',
+      modalEnter:'modal-slide-in', 
+      modalLeave:'modal-slide-out',
+      pageTransition: 'ios-transition',
+     // tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
     }),
     HttpModule,
     HttpClientModule,
     SignPageModule,
     IonicStorageModule.forRoot({
       name: 'MyApp',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    ComponentsModule
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,10 +51,10 @@ import { NgxEchartsModule} from 'ngx-echarts';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AppProvider,
     CommonProvider,
     FunctionProvider,
   ]
 })
-export class AppModule {}
+export class AppModule { }

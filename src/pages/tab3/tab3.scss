@@ -2,4 +2,43 @@ page-tab3 {
     a:active{
         background: black !important;
     }
+    .scroll-content{
+        background: #f3efef;
+    }
+    .list-user{
+        margin-bottom: .5rem;
+        >:nth-child(1){
+            margin-top: 0.5rem;
+        }
+        ion-icon{
+            color: #2191ec;
+        } 
+    }
+    .userInfo{
+        display: flex;
+        height: 1.5rem;
+        img {
+            display: block;
+            width: 1.5rem;
+            height: 1.5rem;
+        }    
+        >div{                       
+            margin: 0 .4rem;
+            height: 1.5rem;
+            >div:nth-child(1){
+                height: 0.8rem;
+                line-height: 0.8rem; 
+            }
+            >div:nth-child(2){
+                height: 0.7rem;
+                font-size: .35rem;
+                color: #bbb7b7;
+            }      
+        }
+    }
+    ion-list:last-child{
+        ion-item{
+            color: #ec4646;
+        }
+    }
 }

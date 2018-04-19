@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, Tabs, Platform } from 'ionic-angular';
 
 /**
  * Generated class for the TabsPage page.
@@ -15,11 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
+  @ViewChild("myTabs") myTabs:Tabs;
   tab1 = "Tab1Page";
   tab2 = "Tab2Page";
   tab3 = "Tab3Page";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor() {
   }
  
   ionViewDidLoad() {

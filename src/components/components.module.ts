@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { DetailComponent } from './detail/detail';
-import { IonicModule } from 'ionic-angular';
+import { IonicPageModule } from 'ionic-angular';
+import { PaginationComponent } from './pagination/pagination';
 @NgModule({
 	declarations: [
-    DetailComponent],
-	imports: [IonicModule.forRoot(ComponentsModule),],
+    DetailComponent,
+    PaginationComponent],
+	imports: [IonicPageModule.forChild(ComponentsModule)],//此处需要改成IonicPageModule
 	exports: [
-	DetailComponent],
+	DetailComponent,
+    PaginationComponent],
 	entryComponents:[DetailComponent]
 })
 export class ComponentsModule {}
