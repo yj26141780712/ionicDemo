@@ -8,11 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from './../pages/home/home';
 import { AppProvider } from '../providers/app/app';
 import { HttpModule } from '@angular/http';
-import { CommonProvider } from '../providers/common/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SignPageModule } from '../pages/sign/sign.module';
 import { IonicStorageModule } from '@ionic/storage';
-import { FunctionProvider } from '../providers/function/function';
 import { BackButtonComponent } from '../components/back-button/back-button';
 import { ComponentsModule } from '../components/components.module';
 //import { NgxEchartsModule} from 'ngx-echarts';
@@ -53,8 +51,6 @@ import { ComponentsModule } from '../components/components.module';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AppProvider,
-    CommonProvider,
-    FunctionProvider,
   ]
 })
 export class AppModule { }
