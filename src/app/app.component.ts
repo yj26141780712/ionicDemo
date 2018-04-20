@@ -11,7 +11,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   rootPage: any = "LoginPage";
   backButtonPressed: boolean = false;// 返回键是否已触发
-
   @ViewChild(Nav) nav: Nav;
 
   constructor(public platform: Platform,

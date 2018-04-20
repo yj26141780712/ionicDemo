@@ -21,7 +21,7 @@ export class AppGlobal {
 export class AppProvider {
 
     constructor(public http: Http,
-        public loadingCtrl: LoadingController,
+        public loadingCtrl: LoadingController, 
         private alertCtrl: AlertController,
         private toastCtrl: ToastController, ) { }
 
