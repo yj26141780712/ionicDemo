@@ -1,11 +1,6 @@
 import { AppProvider } from './../providers/app/app';
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-=======
 import { Component, ViewChild } from '@angular/core';
 import { Platform, IonicApp, Keyboard, Nav } from 'ionic-angular';
->>>>>>> 6d8a46b65cd93df5b2a8ca2eab61af8063d64739
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -14,39 +9,13 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-<<<<<<< HEAD
-  rootPage: any = "LoadingPage";
- // checkStartTime: Date;
-  constructor(platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
-    public ap: AppProvider) {
-=======
-  rootPage: any = "LoginPage";
-  backButtonPressed: boolean = false;// 返回键是否已触发
-
-  @ViewChild(Nav) nav: Nav;
-
-  constructor(public platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
     public ap: AppProvider,
     public ionicApp: IonicApp,
     public keyboard: Keyboard) {
->>>>>>> 6d8a46b65cd93df5b2a8ca2eab61af8063d64739
-    platform.ready().then(() => {
+    platform.ready().then(() => { 
       //statusBar.styleDefault();
       statusBar.hide();
       splashScreen.hide();
-<<<<<<< HEAD
-
-    });
-  }
-
-
-
-}
-=======
       //console.log(this.platform);  
       console.log(this.ionicApp);
       this.registerBackButtonAction();
@@ -54,7 +23,6 @@ export class MyApp {
      // console.log(this.nav.getActive());
     });
   }
->>>>>>> 6d8a46b65cd93df5b2a8ca2eab61af8063d64739
 
   registerBackButtonAction(): void {
     this.platform.registerBackButtonAction((): any => {
