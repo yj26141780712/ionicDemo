@@ -9,10 +9,18 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  rootPage: any = "LoginPage";
+  backButtonPressed: boolean = false;// 返回键是否已触发
+
+  @ViewChild(Nav) nav: Nav;
+
+  constructor(public platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
     public ap: AppProvider,
     public ionicApp: IonicApp,
     public keyboard: Keyboard) {
-    platform.ready().then(() => { 
+    platform.ready().then(() => {
       //statusBar.styleDefault();
       statusBar.hide();
       splashScreen.hide();
